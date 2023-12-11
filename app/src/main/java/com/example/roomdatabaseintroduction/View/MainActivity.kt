@@ -1,8 +1,9 @@
 package com.example.roomdatabaseintroduction.View
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.roomdatabaseintroduction.Model.ConnectDb
+import com.example.roomdatabaseintroduction.Model.AppDatabase
 import com.example.roomdatabaseintroduction.Model.WorkerData
 import com.example.roomdatabaseintroduction.databinding.ActivityMainBinding
 
@@ -19,7 +20,8 @@ class MainActivity : AppCompatActivity() {
                 val ke=binding.AddKEText.text.toString()
                 val cost=binding.AddCostText.text.toString().toIntOrNull() ?: 0
                 val worker=WorkerData(name =name,age=age,ke=ke,cost=cost)
-                ConnectDb.database.workerdao().insertWorker(worker)
+                AppDatabase.getAllWorkers(this).DaoInterface().insert(worker)
+            startActivity(Intent(this, DataActivity::class.java))
 
         }
 

@@ -10,7 +10,8 @@ interface DaoInterface {
     fun getAllWorkers():List<WorkerData>
 
     @Insert
-    fun insertWorker(vararg workerData: WorkerData)
+    fun insert(workerData: WorkerData)
+
 
 
 
